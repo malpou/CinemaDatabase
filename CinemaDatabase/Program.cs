@@ -9,8 +9,12 @@ namespace CinemaDatabase
         {
             if (SQL.CheckConnection())
             {
-                Console.WriteLine("Forbindelse");
+                SQL.CreateDatabase();
             }
+            Create.Customer("mail4@test.com");
+            Create.Customer("mail5@test.com", "Malthe");
+            Create.Customer("mail6@test.com", "Henrik", "Poulsen");
+
         }
     }
 }

@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
-using System.Text;
 
 namespace CinemaDatabase.Controller
 {
     class SQL
     {
-        private static string ConnectionString = "Server=localhost;Database=master;Trusted_Connection=True;";
+        private static readonly string connectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
 
         public static bool CheckConnection()
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -27,9 +26,59 @@ namespace CinemaDatabase.Controller
             }
         }
 
-        private static void CreateTable()
+        public static void CreateDatabase()
         {
-            throw NotImplementedException;
+            RunQueryFile("BuildDB");
+        }
+
+
+
+        private static void RunQueryFile(string fileName)
+        {
+            /*FileInfo file = new FileInfo($"Querys/{fileName}.sql");
+            string script = file.OpenText().ReadToEnd();
+            script = script.Replace("GO", "");
+            SqlConnection connection;
+            connection = new SqlConnection { ConnectionString = connectionString };
+            connection.Open();
+            SqlCommand query = new SqlCommand(script, connection);
+            query.ExecuteNonQuery();
+            connection.Close();*/
+
+            FileInfo file = new FileInfo($"Querys/{fileName}.sql");
+            string query = file.OpenText().ReadToEnd();
+            string[] splitter = new string[] { "\r\nGO" };
+            string[] commandTexts = query.Split(splitter, StringSplitOptions.RemoveEmptyEntries);
+
+            using(SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                foreach (var commandText in commandTexts)
+                {
+                    try
+                    {
+                        using (SqlCommand cmd = connection.CreateCommand())
+                        {
+                            cmd.CommandText = commandText;
+                            cmd.CommandType = CommandType.Text;
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        connection.Close();
+                        throw;
+                    }
+                }
+
+                connection.Close();
+            }
+
+
+
+
+
         }
     }
 }
