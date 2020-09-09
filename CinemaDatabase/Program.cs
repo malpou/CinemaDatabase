@@ -1,5 +1,6 @@
-﻿using CinemaDatabase.Controller;
-using System;
+﻿using System;
+using CinemaDatabase.Controller;
+using CinemaDatabase.Models;
 
 namespace CinemaDatabase
 {
@@ -11,10 +12,6 @@ namespace CinemaDatabase
             {
                 SQL.CreateDatabase();
             }
-            Create.Customer("mail4@test.com");
-            Create.Customer("mail5@test.com", "Malthe");
-            Create.Customer("mail6@test.com", "Henrik", "Poulsen");
-
         }
     }
 }
