@@ -7,20 +7,30 @@ namespace CinemaDatabase.Controller
 {
     class Read
     {
+        public static Customer SpecificCustomer(int userId)
+        {
+            using var context = new CinemaContext();
+            return context.Customer.Single(c => c.CustomerId == userId);
+        }
         public static List<Customer> AllCustomers()
         {
             using var context = new CinemaContext();
             return context.Customer.ToList();
         }
-        public static Customer SpecificCustomer (int id)
+        public static Movie SpecificMovie(int movieId)
         {
             using var context = new CinemaContext();
-            return context.Customer.Single(c => c.CustomerId == id);
+            return context.Movie.Single(m => m.MovieId == movieId);
         }
-        public static Movie SpecificMovie(int id)
+        public static List<Movie> AllMovies()
         {
             using var context = new CinemaContext();
-            return context.Movie.Single(m => m.MovieId == id);
+            return context.Movie.ToList();
+        }
+        public static List<Booking> UserBookings(int userId)
+        {
+            using var context = new CinemaContext();
+            return context.Booking.Where(b => b.CustomerId == userId).ToList();
         }
     }
 }
