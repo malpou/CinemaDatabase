@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using CinemaDatabase.Controller;
 using CinemaDatabase.Models;
 using Terminal.Gui;
@@ -10,15 +11,9 @@ namespace CinemaDatabase.Views
         public static bool IsValidEmail(TextField textField)
         {
             string email = FieldString(textField);
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+            return match.Success;
         }
              
         public static string CheckProp(string str)
