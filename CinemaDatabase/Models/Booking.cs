@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace CinemaDatabase.Models
+﻿namespace CinemaDatabase.Models
 {
     public partial class Booking
     {

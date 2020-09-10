@@ -1,5 +1,4 @@
 ﻿using CinemaDatabase.Controller;
-using System;
 using Terminal.Gui;
 
 namespace CinemaDatabase.Views

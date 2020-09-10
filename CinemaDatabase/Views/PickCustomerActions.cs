@@ -1,8 +1,4 @@
-﻿using CinemaDatabase.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Terminal.Gui;
+﻿using Terminal.Gui;
 
 namespace CinemaDatabase.Views
 {

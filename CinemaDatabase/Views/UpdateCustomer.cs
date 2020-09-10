@@ -1,7 +1,6 @@
 ﻿using CinemaDatabase.Controller;
 using CinemaDatabase.Models;
 using CinemaDatabase.Views;
-using System;
 using Terminal.Gui;
 
 namespace CinemaDatabase

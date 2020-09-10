@@ -1,8 +1,7 @@
-﻿using CinemaDatabase.Controller;
+﻿using System.Collections.Generic;
+using CinemaDatabase.Controller;
 using CinemaDatabase.Models;
 using CinemaDatabase.Views;
-using System;
-using System.Collections.Generic;
 using Terminal.Gui;
 
 namespace CinemaDatabase

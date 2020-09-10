@@ -12,6 +12,7 @@ namespace CinemaDatabase
         static void Main(string[] args)
         {
             if (SQL.CheckConnection()) SQL.CreateDatabase();
+            else Console.ReadKey();
 
             int homeChoice, typeChoice, usrActionChoice, admActionChoice;
             do
