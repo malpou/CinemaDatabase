@@ -4,6 +4,8 @@ using CinemaDatabase.Views;
 using CinemaDatabase.Models;
 using Terminal.Gui;
 
+// TODO After pickusertype add a pickneworolduser where you can select if you want to create a new user or use an old one by typing in the user if.
+// TODO Create a customeractions so i'ts possible to see all bokkings and pick one you wan't to edit
 
 namespace CinemaDatabase
 {
@@ -12,7 +14,6 @@ namespace CinemaDatabase
         static void Main(string[] args)
         {
             if (SQL.CheckConnection()) SQL.CreateDatabase();
-            else Console.ReadKey();
 
             int homeChoice, typeChoice, usrActionChoice, admActionChoice;
             do
