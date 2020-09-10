@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using CinemaDatabase.Controller;
 using CinemaDatabase.Models;
 using CinemaDatabase.Views;
@@ -10,7 +11,7 @@ namespace CinemaDatabase
     {
         public static void View()
         {
-            List<Customer> customers = Read.AllCustomers();
+            List<Customer> customers = Read.AllCustomers().OrderBy(c => c.Mail).ToList();
 
             Application.Init();
             var top = Application.Top;
@@ -31,6 +32,7 @@ namespace CinemaDatabase
                 new Label(10, 3, "Mail"),
                 new Label(40, 3, "First Name"),
                 new Label(65, 3, "Last Name"),
+                new Label(17, 1, "--- Sorted alpfabetic by customer mail ---"),
                 continueButton
                 );
             
