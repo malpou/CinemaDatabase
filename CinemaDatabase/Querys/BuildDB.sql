@@ -34,6 +34,22 @@ BEGIN
 		Title VARCHAR(100) NOT NULL,
 		Price int NOT NULL
 	)
+	INSERT INTO Movie (Title, Price)
+	VALUES ('Harry Potter og De Vises Sten', 64)
+	INSERT INTO Movie (Title, Price)
+	VALUES ('Harry Potter og Hemmelighedernes Kammer', 63)
+	INSERT INTO Movie (Title, Price)
+	VALUES ('Harry Potter og Fangen fra Azkaban', 82)
+	INSERT INTO Movie (Title, Price)
+	VALUES ('Harry Potter og Flammernes Pokal', 81)
+	INSERT INTO Movie (Title, Price)
+	VALUES ('Harry Potter og Fønixordenen', 71)
+	INSERT INTO Movie (Title, Price)
+	VALUES ('Harry Potter og Halvblodsprinsen', 78)
+	INSERT INTO Movie (Title, Price)
+	VALUES ('Harry Potter og Dødsregalierne – Del 1', 65)
+	INSERT INTO Movie (Title, Price)
+	VALUES ('Harry Potter og Dødsregalierne – Del 2', 87)
 END
 
 IF NOT EXISTS(SELECT *

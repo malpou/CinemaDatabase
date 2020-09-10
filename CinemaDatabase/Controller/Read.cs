@@ -12,6 +12,13 @@ namespace CinemaDatabase.Controller
             using var context = new CinemaContext();
             return context.Customer.Single(c => c.CustomerId == userId);
         }
+        public static Customer LastCustomer()
+        {
+            using var context = new CinemaContext();
+            return context.Customer
+                .OrderByDescending(c => c.CustomerId)
+                .FirstOrDefault();
+        }
         public static List<Customer> AllCustomers()
         {
             using var context = new CinemaContext();

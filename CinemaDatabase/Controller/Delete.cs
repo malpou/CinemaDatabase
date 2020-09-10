@@ -11,19 +11,8 @@ namespace CinemaDatabase.Controller
             using CinemaContext context = new CinemaContext();
             Customer customer = Read.SpecificCustomer(customerId);
             List<Booking> bookings = Read.UserBookings(customerId);
-            foreach (Booking booking in bookings)
-            {
-                Booking(customerId);
-            }
+            context.Booking.RemoveRange(bookings);
             context.Customer.Remove(customer);
-            context.SaveChanges();
-        }
-
-        private static void Booking(int bookingId)
-        {
-            using var context = new CinemaContext();
-            var booking = context.Booking.Single(b => b.BookingId == bookingId);
-            context.Booking.Remove(booking);
             context.SaveChanges();
         }
     }

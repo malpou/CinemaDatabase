@@ -6,30 +6,18 @@ using System.Text;
 
 namespace CinemaDatabase.Controller
 {
-    public class Update
+    class Update
     {
-        public static void CustomerMail(int id, string newMail)
+        public static void Customer(int id, string newMail, string newFirstName, string newLastName)
         {
             using var context = new CinemaContext();
             Customer customer = context.Customer.Single(c => c.CustomerId == id);
             customer.Mail = newMail;
+            customer.FirstName = newFirstName == "" ? null : newFirstName;
+            customer.LastName = newLastName == "" ? null : newFirstName;
             context.SaveChanges();
         }
-        public static void CustomerFirstName(int id, string newFirstName)
-        {
-            using var context = new CinemaContext();
-            Customer customer = context.Customer.Single(c => c.CustomerId == id);
-            customer.FirstName = newFirstName;
-            context.SaveChanges();
-        }
-        public static void CustomerLastName(int id, string newLastName)
-        {
-            using var context = new CinemaContext();
-            Customer customer = context.Customer.Single(c => c.CustomerId == id);
-            customer.LastName = newLastName;
-            context.SaveChanges();
-        }
-        public static void Moive(int id, string newTitle)
+        public static void Movie(int id, string newTitle)
         {
             using var context = new CinemaContext();
             Movie movie = context.Movie.Single(m => m.MovieId == id);

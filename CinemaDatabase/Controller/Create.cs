@@ -6,7 +6,7 @@ using CinemaDatabase.Models;
 
 namespace CinemaDatabase.Controller
 {
-    public class Create
+    class Create
     {
         public static void Customer(string mail)
         {
