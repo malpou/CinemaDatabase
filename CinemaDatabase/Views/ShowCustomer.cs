@@ -26,12 +26,7 @@ namespace CinemaDatabase.Views
                 new Label(3, 6, $"Last Name:  {Utilities.CheckProp(customer.LastName)}"),
                 continueButton
                 );
-                
-
-
             Application.Run();
         }
-
-        
     }
 }

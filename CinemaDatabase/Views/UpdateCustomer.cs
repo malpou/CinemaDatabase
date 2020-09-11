@@ -47,7 +47,6 @@ namespace CinemaDatabase
                 firstNameField,
                 lastNameField,
                 createBtn);
-
             Application.Run();
             return Read.SpecificCustomer(newCustomer.CustomerId);
         }

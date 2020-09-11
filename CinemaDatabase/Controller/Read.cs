@@ -1,7 +1,7 @@
-﻿using System.Data;
-using System.Linq;
+﻿using CinemaDatabase.Models;
 using System.Collections.Generic;
-using CinemaDatabase.Models;
+using System.Data;
+using System.Linq;
 
 namespace CinemaDatabase.Controller
 {

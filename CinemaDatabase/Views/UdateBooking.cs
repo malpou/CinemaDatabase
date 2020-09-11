@@ -1,32 +1,34 @@
 ﻿using CinemaDatabase.Controller;
 using CinemaDatabase.Models;
 using System.Collections.Generic;
+using System.Linq;
 using Terminal.Gui;
 
 namespace CinemaDatabase.Views
 {
-    class CreateBooking
+    class UdateBooking
     {
-        public static void View(Models.Customer customer)
+        public static void View(int customerId, int bookingNumber)
         {
             List<Movie> movies = Read.AllMovies();
+            Booking booking = Read.UserBookings(customerId).Single(b => b.BookingNumber == bookingNumber);
 
             Application.Init();
             var top = Application.Top;
 
-            var win = new Window(new Rect(0, 0, top.Frame.Width, top.Frame.Height), "Create Customer");
+            var win = new Window(new Rect(0, 0, top.Frame.Width, top.Frame.Height), "Update Booking");
             top.Add(win);
 
-            var movieIdField = new TextField(14, 2, 40, "");
-            var quantityField = new TextField(14, 4, 40, "");
+            var movieIdField = new TextField(14, 2, 40, $"{booking.MovieId}");
+            var quantityField = new TextField(14, 4, 40, $"{booking.Quantity}");
 
-            var createBtn = new Button(5, 10, "Create New Booking")
+            var createBtn = new Button(5, 10, "Update Booking")
             {
                 Clicked = () =>
                 {
                     if (Utilities.CheckMovieId(movieIdField, out int movieId) && int.TryParse(Utilities.FieldString(quantityField), out int quantity))
                     {
-                        Create.Booking(customer.CustomerId, movieId, quantity);
+                        Update.Booking(booking.BookingId, movieId, quantity);
                         Application.RequestStop();
                     }
                     else

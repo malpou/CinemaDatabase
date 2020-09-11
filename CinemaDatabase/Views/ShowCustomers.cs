@@ -35,7 +35,6 @@ namespace CinemaDatabase
                 new Label(17, 1, "--- Sorted alpfabetic by customer mail ---"),
                 continueButton
                 );
-            
 
             int y = 4;
             for (int i = 0; i < customers.Count; i++)
@@ -48,8 +47,7 @@ namespace CinemaDatabase
                     new Label(65, y, $"{Utilities.CheckProp(c.LastName)}")
                     );
                 y++;
-            }
-
+            };
             Application.Run();
 
         }

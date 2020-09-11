@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using CinemaDatabase.Models;
+﻿using CinemaDatabase.Models;
+using System.Collections.Generic;
 
 namespace CinemaDatabase.Controller
 {
@@ -15,5 +15,4 @@ namespace CinemaDatabase.Controller
             context.SaveChanges();
         }
     }
-    
 }

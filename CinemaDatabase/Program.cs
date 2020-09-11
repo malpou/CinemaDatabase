@@ -1,12 +1,7 @@
-﻿using System;
-using CinemaDatabase.Controller;
-using CinemaDatabase.Views;
+﻿using CinemaDatabase.Controller;
 using CinemaDatabase.Models;
-using Terminal.Gui;
+using CinemaDatabase.Views;
 
-// TODO After pickusertype add a pickneworolduser where you can select if you want to create a new user or use an old one by typing in the user if.
-// TODO Create a customeractions so i'ts possible to see all bokkings and pick one you wan't to edit
-// TODO Fix the UX Experience
 
 namespace CinemaDatabase
 {
@@ -16,7 +11,8 @@ namespace CinemaDatabase
         {
             if (SQL.CheckConnection()) SQL.CreateDatabase();
 
-            int homeChoice, typeChoice, usrActionChoice, admActionChoice;
+            int homeChoice, typeChoice, usrActionChoice, admActionChoice, newOldChoice;
+            Customer customer;
             do
             {
                 homeChoice = PickStart.View();
@@ -25,24 +21,32 @@ namespace CinemaDatabase
                     typeChoice = PickUserType.View();
                     if (typeChoice == 0)
                     {
-                        Customer newCustomer = CreateCustomer.View();
-                        ShowCustomer.View(newCustomer);
+                        newOldChoice = PickNewOrOldCustomer.View();
+                        if (newOldChoice == 0)
+                        {
+                            customer = CustomerLogin.View();
+                        }
+                        else
+                        {
+                            customer = CreateCustomer.View();
+                        }
+                        ShowCustomer.View(customer);
                         do
                         {
                             usrActionChoice = PickCustomerActions.View();
                             switch (usrActionChoice)
                             {
                                 case 0:
-                                    CreateBooking.View(newCustomer);
+                                    CreateBooking.View(customer);
                                     break;
                                 case 1:
-                                    ShowCustomerBookings.View(newCustomer);
+                                    ShowCustomerBookings.View(customer);
                                     break;
                                 case 2:
-                                    newCustomer = UpdateCustomer.View(newCustomer);
+                                    customer = UpdateCustomer.View(customer);
                                     break;
                                 case 3:
-                                    Delete.Customer(newCustomer.CustomerId);
+                                    Delete.Customer(customer.CustomerId);
                                     usrActionChoice = 4;
                                     break;
                                 default:

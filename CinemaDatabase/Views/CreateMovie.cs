@@ -30,7 +30,6 @@ namespace CinemaDatabase.Views
                 }
             };
 
-
             win.Add(
                 new Label(3, 2, "Title: "),
                 new Label(3, 4, "Price: "),
@@ -38,7 +37,6 @@ namespace CinemaDatabase.Views
                 priceField,
                 createBtn
                 );
-
             Application.Run();
         }
     }

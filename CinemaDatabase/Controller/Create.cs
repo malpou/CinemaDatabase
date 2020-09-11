@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CinemaDatabase.Models;
+using System;
 using System.Linq;
-using CinemaDatabase.Models;
 
 namespace CinemaDatabase.Controller
 {
@@ -13,7 +13,6 @@ namespace CinemaDatabase.Controller
             context.Customer.Add(customer);
             context.SaveChanges();
         }
-
         public static void Customer(string mail, string firstName)
         {
             using var context = new CinemaContext();
@@ -24,7 +23,7 @@ namespace CinemaDatabase.Controller
             };
             context.Customer.Add(customer);
             context.SaveChanges();
-        } 
+        }
         public static void Customer(string mail, string firstName, string lastName)
         {
             using var context = new CinemaContext();
@@ -48,7 +47,7 @@ namespace CinemaDatabase.Controller
             context.Movie.Add(movie);
             context.SaveChanges();
         }
-        public static void Booking(int customerId, int movieId, int quantity) 
+        public static void Booking(int customerId, int movieId, int quantity)
         {
             using CinemaContext context = new CinemaContext();
             Booking booking = new Booking
@@ -61,7 +60,6 @@ namespace CinemaDatabase.Controller
             context.Booking.Add(booking);
             context.SaveChanges();
         }
-
         private static int GetBookingNumber()
         {
             using var context = new CinemaContext();

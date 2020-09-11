@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using CinemaDatabase.Controller;
+﻿using CinemaDatabase.Controller;
 using CinemaDatabase.Models;
+using System.Collections.Generic;
 using Terminal.Gui;
 
 namespace CinemaDatabase.Views
@@ -17,6 +17,7 @@ namespace CinemaDatabase.Views
             var win = new Window(new Rect(0, 0, top.Frame.Width, top.Frame.Height), "Show Customers");
             top.Add(win);
 
+            var bookingNumberField = new TextField(20, 1, 17, "");
             var continueButton = new Button(1, 1, "Continue")
             {
                 Clicked = () =>
@@ -24,13 +25,32 @@ namespace CinemaDatabase.Views
                     Application.RequestStop();
                 }
             };
+            var editButton = new Button(45, 1, "Edit Booking")
+            {
+                Clicked = () =>
+                {
+                    if (Utilities.CheckBookingNumber(bookingNumberField, newCustomer, out int bookingNumber))
+                    {
+
+                        Application.RequestStop();
+                        UdateBooking.View(newCustomer.CustomerId, bookingNumber);
+                    }
+                    else
+                    {
+                        win.Add(new Label(20, 3, "Invalid input..."));
+                    }
+                }
+            };
 
             win.Add(
+                new Label(20, 0, "Booking (Number)"),
                 new Label(2, 3, "Booking"),
                 new Label(12, 3, "Mail"),
                 new Label(35, 3, "Movie Title"),
                 new Label(80, 3, "Quantity"),
                 new Label(95, 3, "Total Price"),
+                bookingNumberField,
+                editButton,
                 continueButton
                 );
 
@@ -47,8 +67,7 @@ namespace CinemaDatabase.Views
                     new Label(95, y, $"{Read.SpecificMovie((int)b.MovieId).Price * b.Quantity:C0}")
                     );
                 y++;
-            }
-
+            };
             Application.Run();
         }
     }

@@ -58,7 +58,7 @@ namespace CinemaDatabase.Views
                 firstNameField,
                 lastNameField,
                 createBtn);
-                
+
             Application.Run();
             return Read.LastCustomer();
         }

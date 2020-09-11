@@ -2,13 +2,13 @@
 
 namespace CinemaDatabase.Views
 {
-    class PickCustomerActions
+    class PickNewOrOldCustomer
     {
         public static int View()
         {
             Application.Init();
             return MessageBox.Query(50, 7,
-                "Customer Actions", "What do you wanna do?", "Order Tickets", "Show Bookings", "Edit Information", "Delete Customer", "Exit");
+                "Login or Create New User", "What do you wanna do?", "Login", "Create New User");
         }
     }
 }

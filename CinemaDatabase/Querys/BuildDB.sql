@@ -22,6 +22,12 @@ BEGIN
 		FirstName VARCHAR(100),
 		LastName VARCHAR(100)
 	)
+	INSERT INTO Customer (Mail, FirstName)
+	Values ('CutomerA@Mail.com', 'User A')
+	INSERT INTO Customer (Mail)
+	Values ('CustomerQ@Mail.com')
+	INSERT INTO Customer (Mail, FirstName, LastName)
+	Values ('CustomerE@Mail.com', 'User', 'E')
 END
 
 IF NOT EXISTS(SELECT *

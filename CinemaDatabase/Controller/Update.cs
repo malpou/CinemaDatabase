@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using CinemaDatabase.Models;
+﻿using CinemaDatabase.Models;
+using System.Linq;
 
 namespace CinemaDatabase.Controller
 {
@@ -14,39 +14,11 @@ namespace CinemaDatabase.Controller
             customer.LastName = newLastName == "" ? null : newFirstName;
             context.SaveChanges();
         }
-        public static void Movie(int id, string newTitle)
-        {
-            using var context = new CinemaContext();
-            Movie movie = context.Movie.Single(m => m.MovieId == id);
-            movie.Title = newTitle;
-            context.SaveChanges();
-        }
-        public static void Movie(int id, int newPrice)
-        {
-            using var context = new CinemaContext();
-            Movie movie = context.Movie.Single(m => m.MovieId == id);
-            movie.Price = newPrice;
-            context.SaveChanges();
-        }
-        public static void Movie(int id, string newTitle, int newPrice)
-        {
-            using var context = new CinemaContext();
-            Movie movie = context.Movie.Single(m => m.MovieId == id);
-            movie.Title = newTitle;
-            movie.Price = newPrice;
-            context.SaveChanges();
-        }
-        public static void BookingMovie(int id, int newMovieId)
+        public static void Booking(int id, int newMovieId, int newQuantity)
         {
             using var context = new CinemaContext();
             Booking booking = context.Booking.Single(b => b.BookingId == id);
             booking.MovieId = newMovieId;
-            context.SaveChanges();
-        }
-        public static void BookingQuantity(int id, int newQuantity)
-        {
-            using var context = new CinemaContext();
-            Booking booking = context.Booking.Single(b => b.BookingId == id);
             booking.Quantity = newQuantity;
             context.SaveChanges();
         }

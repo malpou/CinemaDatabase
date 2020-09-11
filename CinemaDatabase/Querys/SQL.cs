@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace CinemaDatabase.Controller
 {
@@ -11,26 +11,22 @@ namespace CinemaDatabase.Controller
 
         public static bool CheckConnection()
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using SqlConnection connection = new SqlConnection(connectionString);
+            try
             {
-                try
-                {
-                    connection.Open();
-                    return true;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    return false;
-                }
+                connection.Open();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
             }
         }
-
         public static void CreateDatabase()
         {
             RunQueryFile("BuildDB");
         }
-
         private static void RunQueryFile(string fileName)
         {
             FileInfo file = new FileInfo($"Querys/{fileName}.sql");
@@ -40,7 +36,7 @@ namespace CinemaDatabase.Controller
 
             using SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            
+
             foreach (var commandText in commandTexts)
             {
                 try
