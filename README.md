@@ -1,6 +1,6 @@
-# Cinema Database
-Som afslutning på OOP skal I løse en opgave, hvor `Microsoft SQL Server` kombineres med `C#` konsol applikation.
 ## Opgavebeskrivelse
+Som afslutning på OOP skal I løse en opgave, hvor `Microsoft SQL Server` kombineres med `C#` konsol applikation.
+
 I `Microsoft SQL Server` skal der oprettes databasen `Biograf`. Som skal indeholde minimum 2 tabeller `Kunder` og `Bestillinger`.
 
 Tabellen `Kunder` skal indeholde oplysninger på kunden: navn, kontaktoplysninger, kundetype og tilsvarende.
