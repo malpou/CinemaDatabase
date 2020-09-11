@@ -7,7 +7,7 @@ namespace CinemaDatabase.Controller
 {
     class SQL
     {
-        private static readonly string connectionString = "Server=.\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
+        private static readonly string connectionString = "Server=localhost;Database=master;Trusted_Connection=True;";
 
         public static bool CheckConnection()
         {

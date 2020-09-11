@@ -21,7 +21,7 @@ namespace CinemaDatabase.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=Cinema;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=Cinema;Trusted_Connection=True;");
             }
         }
 
